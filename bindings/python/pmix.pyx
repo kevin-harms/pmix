@@ -147,7 +147,7 @@ cdef class PMIxServer:
         pass
 
 cdef void client_connected(pmix_proc_t *proc, void *server_object,
-                           pmix_op_cbfunc_t cbfunc, void *cbdata):
+                           pmix_op_cbfunc_t cbfunc, void *cbdata) with gil:
     print "CLIENT CONNECTED", proc.nspace, proc.rank
     keys = pmixservermodule.keys()
     if 'clientconnected' in keys:
